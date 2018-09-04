@@ -84,14 +84,10 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
-                <div class="title m-b-md">
-                    TheBookMark
-                </div>
-
+                @yield('content')
                 <div class="links">
-                    <a href="{{ route('index') }}" class="color">Home</a>
+                    <a href="{{ route('index') }}">Home</a>
                     <a href="{{ route('aboutus') }}">About Us</a>
                     <a href="{{ route('bookmarks') }}">Bookmarks</a>
                     <a href="{{ route('offers') }}">Offers</a>
