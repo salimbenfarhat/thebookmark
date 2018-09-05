@@ -18,3 +18,6 @@ Route::get('/bookmarks', 'FrontController@bookmarks')->name('bookmarks');
 Route::get('/offers', 'FrontController@offers')->name('offers');
 Route::get('/api', 'FrontController@api')->name('api');
 Route::get('/contact', 'FrontController@contact')->name('contact');
+
+Route::get('/home', 'BackController@index')->name('home');
+Route::get('/settings', 'BackController@settings')->name('settings');
