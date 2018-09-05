@@ -85,16 +85,31 @@
                 </div>
             @endif
             <div class="content">
+                @yield('content-title')
+                @yield('content-nav')
                 @yield('content')
-                <div class="links">
-                    <a href="{{ route('index') }}">Home</a>
-                    <a href="{{ route('aboutus') }}">About Us</a>
-                    <a href="{{ route('bookmarks') }}">Bookmarks</a>
-                    <a href="{{ route('offers') }}">Offers</a>
-                    <a href="{{ route('api') }}">API</a>
-                    <a href="{{ route('contact') }}">Contact</a>
-                </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script>
+          var x = document.getElementById("city");
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+              x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+          }
+          function showPosition(position) {
+            var locAPI = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=true";
+            $.get({
+              url: locAPI,
+              success: function(data) {
+                console.log(data);
+                x.innerHTML = data.results[0].address_components[2].long_name + " ";
+              }
+            });
+          }
+        </script>
     </body>
 </html>
